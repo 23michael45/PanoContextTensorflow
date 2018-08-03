@@ -10,9 +10,9 @@ def xyz2uvN( xyz, planeID ):
         planeID = 0;
     
 
-    ID1 = (planeID+0)%3;
-    ID2 = (planeID+1)%3;
-    ID3 = (planeID+2)%3;
+    ID1 =  np.int32((planeID+0)%3);
+    ID2 =  np.int32((planeID+1)%3);
+    ID3 =  np.int32((planeID+2)%3);
 
     normXY = np.sqrt( xyz[:,ID1]**2+xyz[:,ID2]**2);
     normXY[normXY<0.000001] = 0.000001;
@@ -30,6 +30,22 @@ def xyz2uvN( xyz, planeID ):
     uv[np.isnan(uv[:,1]),1] = 0;
     
     return uv
+def coords2uv( coords, width, height ):
+    #COORDS2UV Image coordinates (xy) to uv
+    #   Convert pixel location on panorama image to UV expression in 3D
+    #   width and height are size of panorama image, width = 2 x height
+    #   the output UV take XY plane for U
+    #   Check uv2coords for opposite mapping
+    middleX = width/2+0.5;
+    middleY = height/2+0.5;
+
+    coords0 = coords[0].T.flatten()
+    coords1 = coords[1].T.flatten()
+
+    uv = np.array([(coords0-middleX)/width*2*np.pi ,-(coords1-middleY)/height*np.pi]).T;
+
+    return uv 
+
 
 def  uv2coords( uv, width, height, planeID ):
     

@@ -11,6 +11,9 @@
     <OutputPath>.</OutputPath>
     <Name>PanoContextTensorflow</Name>
     <RootNamespace>PanoContextTensorflow</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,20 +24,30 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CInteraction.py" />
     <Compile Include="CoordsTransform.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="icosahedron2sphere.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LineFaceIntersection.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Main.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PanoContextTensorflow.py" />
+    <Compile Include="PolygonRegion.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Projection.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Rotation.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Segmentation.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tutorials\Interpolate.py">
@@ -49,6 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tutorials\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PythonCallC\PythonCallC.vcxproj">
+      <Name>PythonCallC</Name>
+      <Project>{1e27c849-0bb0-4c4f-bd09-f5e3eaf960e4}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

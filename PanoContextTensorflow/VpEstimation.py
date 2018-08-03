@@ -90,8 +90,8 @@ def lsdWrap( img, qerror ):
     
 
     ## delete buffer files
-    #os.remove( imgbuf );
-    #os.remove( edgbuf );
+    os.remove( imgbuf );
+    os.remove( edgbuf );
     
 
     return  [ edgeMap, edgeList ]

@@ -112,5 +112,47 @@ if __name__ == '__main__':
     
     plt.scatter(x,y, 100, 'r','o');
     #plt.show()
+
+
+    mat = np.arange(25)
+    mat = np.reshape(mat,[5,5])
+    f1 = mat.flatten()
+    f2 = mat.T.flatten()
+    print(f1)
+    print(f2)
+
+
+    print (mat.dtype)
+
+
+    A = [[1, 2], [3, 4]]
+    padA = np.pad(A, (2, 2), 'edge')
+    print(padA);
+
+    c = np.ones(1024 * 1024,dtype = np.int32) * 256;
+
+    arr = np.array([c,c])
+    idx = np.ravel_multi_index(arr, (512,1024))
+    print(idx)
+
+
+    idx = np.ravel_multi_index([[1,2,3],[1,2,3]],[4,5])
+    print(idx)
+    a = np.unravel_index(idx,[4,5])
+    print(a)
+    a = np.unravel_index(idx,[3,4,5])
+    print(a)
+
+    idx = idx + 4*5;
+    a = np.unravel_index(idx,[3,4,5])
+    print(a)
+
+    A = np.arange(8*8*3);
+    matones = np.reshape(A,[8,8,3])
+    mat = matones[2:4,[3,4],0]
+    
+    mat = matones[[2,3],[3,4],0]
+
     import PanoContextTensorflow
-    PanoContextTensorflow.process()
+    newPanoEdgeVP = PanoContextTensorflow.process1()
+    PanoContextTensorflow.process2(newPanoEdgeVP)
