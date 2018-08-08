@@ -4,10 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.misc import imread, imsave, imresize
 import PIL.Image
 
-
-if __name__ == '__main__':
-   
-   
+def test1():   
     '''
     a = [[1,2,3,4],
          [5,6,7,8],
@@ -153,6 +150,54 @@ if __name__ == '__main__':
     
     mat = matones[[2,3],[3,4],0]
 
-    import PanoContextTensorflow
-    newPanoEdgeVP = PanoContextTensorflow.process1()
-    PanoContextTensorflow.process2(newPanoEdgeVP)
+    i = 0
+    money = 0
+    money2 = 0
+    while(True):
+        you = np.random.randn();
+        me = np.random.randn();
+        if(you == 0 and me == 0):
+            continue
+
+        elif(you < 0 and me < 0):
+            money -= 1
+            money2 -= 3
+        elif(you > 0 and me > 0):
+            money -= 1;
+            money2 -= 1
+        else:
+            money += 1;
+            money2 += 2;
+        print(money, '       ' ,money2)
+
+
+def test2():
+    A = np.array([True ,True ,False,False,True])
+    print(np.where(A))
+
+
+    arr = np.array([[3,6,6,6],[4,5,1,1]])
+    ret = np.ravel_multi_index(arr, (7,6))
+
+    arr = np.array([[1,0,0],[2,2,2],[0,0,1]])
+    ret = np.ravel_multi_index(arr, (3,3,2),order='F')
+    print(ret)
+
+    a = np.array([1,0,1])
+    b = -(a-1)
+    print(b)
+
+if __name__ == '__main__':
+   
+    test2()
+    #import PanoContextTensorflow
+    ##newPanoEdgeVP = PanoContextTensorflow.process1()
+    ##PanoContextTensorflow.process2(newPanoEdgeVP)
+
+    
+    import compRoomHypot
+
+    
+    SrcImage = './data/pano_abbvryjplnajxo.jpg'
+    compRoomHypot.compRoomHypot(SrcImage);
+

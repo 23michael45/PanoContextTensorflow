@@ -436,7 +436,7 @@ def vpEstimationPano( lines ):
 
     
     olines = [l1,l2,l3]
-    return [ olines, mainDirect] 
+    return [ olines, mainDirect,score,angle] 
 
 
 def assignVanishingType( lines, vp, tol, area ):

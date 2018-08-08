@@ -25,6 +25,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CInteraction.py" />
+    <Compile Include="compRoomHypot.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CoordsTransform.py">
       <SubType>Code</SubType>
     </Compile>
@@ -38,10 +41,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PanoContextTensorflow.py" />
+    <Compile Include="PanoEdgeDetection.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PolygonRegion.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Projection.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RoomHypothesisSampling.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Rotation.py">
@@ -53,6 +62,21 @@
     <Compile Include="Tutorials\Interpolate.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="VanishingPoint\Geometry.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VanishingPoint\OMPrivate.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VanishingPoint\OrientMap.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VanishingPoint\VPPrivate.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VanishingPoint\VanishingPoint.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Visualization.py">
       <SubType>Code</SubType>
     </Compile>
@@ -61,7 +85,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="VanishingPoint\" />
     <Folder Include="Tutorials\" />
+    <Folder Include="VanishingPoint\Private\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PythonCallC\PythonCallC.vcxproj">

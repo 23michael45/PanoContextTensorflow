@@ -52,10 +52,10 @@ def gbPanoSegment( img, sigma, k, minSz ):
     xySubs = CoordsTransform.uv2coords(CoordsTransform.xyz2uvN(coor,0), width, height,0);
     xySubs = np.int32(xySubs);
 
-    SrcImage = './data/xySubs.mat'
-    dict = loadmat(SrcImage)
-    xySubs = dict['xySubs']
-    xySubs = xySubs -1;
+    #SrcImage = './data/xySubs.mat'
+    #dict = loadmat(SrcImage)
+    #xySubs = dict['xySubs']
+    #xySubs = xySubs -1;
     
     idx = np.where(xySubs[:,1] < 0)
     xySubs[idx,1] = 0

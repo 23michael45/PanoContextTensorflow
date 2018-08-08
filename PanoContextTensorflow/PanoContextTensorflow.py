@@ -8,11 +8,11 @@ import Visualization
 import CoordsTransform
 import PIL.Image
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 import Rotation
 import Segmentation
 import PolygonRegion
 import LineFaceIntersection
+
 def process1():
 
     SrcImage = './data/pano_room.jpg'
@@ -89,7 +89,7 @@ def process1():
 
 
     # estimating vanishing point: Hough 
-    [ olines, mainDirect] = VpEstimation.vpEstimationPano( lines ); # mainDirect is vanishing point, in xyz format
+    [ olines, mainDirect ,_ ,_] = VpEstimation.vpEstimationPano( lines ); # mainDirect is vanishing point, in xyz format
 
 
     vpCoords = CoordsTransform.uv2coords(CoordsTransform.xyz2uvN(mainDirect,0), 1024, 512,0); # transfer to uv format, then image coords

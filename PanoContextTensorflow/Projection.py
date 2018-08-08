@@ -4,6 +4,7 @@ from scipy import ndimage
 import matplotlib.pyplot as plt
 from scipy.misc.pilutil import imshow
 from scipy.misc import imread, imsave, imresize
+import CoordsTransform
 class Scene:
     img = []
     vx = []
@@ -63,6 +64,25 @@ def separatePano( panoImg, fov, x, y, imgSize):
             for i = 1:numScene
                 imwrite(sepScene(i).img, sprintf('#s\#02d.pgm', saveDir, i), 'pgm');
     '''
+
+def combineViews( Imgs, width, height ):
+    #COMBINEVIEWS Combine separate views to panorama
+    #   Imgs: same format as separatePano
+
+    panoout = np.zeros([height, width, Imgs[0].img.shape[2]]);
+    panowei = np.zeros([height, width, Imgs[0].img.shape[2]]);
+    imgNum = len(Imgs);
+    for i in np.arange(imgNum):
+        [sphereImg, validMap] = CoordsTransform.im2Sphere( Imgs[i].img, Imgs[i].fov, width, height, Imgs[i].vx[0,0], Imgs[i].vy[0,0]);
+        sphereImg[~validMap]= 0;   
+        panoout = panoout + sphereImg;
+        panowei = panowei + validMap;
+    
+    panoout[panowei==0] = 0;
+    panowei[panowei==0] = 1;
+    panoout = panoout/np.double(panowei);
+
+    return panoout
 
 
 
